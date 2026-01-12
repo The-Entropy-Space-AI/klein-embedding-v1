@@ -1,5 +1,6 @@
-from tokenizers import ByteLevelBPETokenizer
 import os
+
+from tokenizers import Tokenizer, models, normalizers, pre_tokenizers, trainers
 
 files = [
     "data/raw/english.txt",
@@ -8,8 +9,9 @@ files = [
     "data/raw/malayalam_native.txt",
     "data/raw/malayalam_roman.txt",
     "data/raw/tamil_native.txt",
-    "data/raw/tamil_roman.txt"
+    "data/raw/tamil_roman.txt",
 ]
+
 
 def batch_iterator(file_paths, limit=50000):
     for path in file_paths:
@@ -17,16 +19,21 @@ def batch_iterator(file_paths, limit=50000):
             for i, line in enumerate(f):
                 if i >= limit:
                     break
-                yield line
+                yield line.strip()
 
-tokenizer = ByteLevelBPETokenizer()
 
-tokenizer.train_from_iterator(
-    batch_iterator(files),
+tokenizer = Tokenizer(models.BPE(unk_token="<unk>"))
+
+tokenizer.normalizer = normalizers.NFKC()
+tokenizer.pre_tokenizer = pre_tokenizers.Whitespace()
+
+trainer = trainers.BpeTrainer(
     vocab_size=32000,
     min_frequency=2,
-    special_tokens=["<s>", "<pad>", "</s>", "<unk>", "<mask>"]
+    special_tokens=["<s>", "<pad>", "</s>", "<unk>", "<mask>"],
 )
 
+tokenizer.train_from_iterator(batch_iterator(files), trainer=trainer)
+
 os.makedirs("data/tokenizer", exist_ok=True)
-tokenizer.save_model("data/tokenizer")
+tokenizer.save("data/tokenizer/tokenizer.json")
