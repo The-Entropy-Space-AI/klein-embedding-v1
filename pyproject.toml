@@ -1,0 +1,14 @@
+[project]
+name = "klein-embedding"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "datasets>=4.4.2",
+    "huggingface-hub>=1.3.1",
+    "python-dotenv>=1.2.1",
+    "tokenizer>=3.6.2",
+    "tokenizers>=0.22.2",
+    "tqdm>=4.67.1",
+]
