@@ -7,8 +7,13 @@ requires-python = ">=3.14"
 dependencies = [
     "datasets>=4.4.2",
     "huggingface-hub>=1.3.1",
+    "lightning-sdk>=2025.12.17",
+    "matplotlib>=3.10.8",
     "python-dotenv>=1.2.1",
     "tokenizer>=3.6.2",
     "tokenizers>=0.22.2",
+    "torch>=2.9.1",
     "tqdm>=4.67.1",
+    "trackio>=0.14.2",
+    "wandb>=0.23.1",
 ]
