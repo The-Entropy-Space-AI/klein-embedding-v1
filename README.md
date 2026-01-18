@@ -71,5 +71,3 @@ print(embeddings.shape) # torch.Size([1, 480])
 * **Efficiency First**: At ~133MB, this model is designed to run on standard CPUs with very low latency (~78ms per sentence).
 * **Full Control**: Every step, from tokenizer normalization to the final contrastive loss, is documented and reproducible.
 * **Transparent Limitations**: This model is optimized for sentence similarity and retrieval, not for text generation or general-purpose LLM tasks.
-
-Would you like me to create a "Similarity Example" code block for the README so users can see how to compare two sentences?
