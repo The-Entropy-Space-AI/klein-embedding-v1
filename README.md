@@ -1,6 +1,6 @@
 # Klein Embedding v1
 
-A **scratch-trained multilingual sentence embedding model** focused on **semantic similarity and retrieval**. This model is built with a focus on transparency, efficiency, and reproducibility.
+A **scratch-trained multilingual sentence embedding model (supports english, tamil, malayalam and hindi)** focused on **semantic similarity and retrieval**. This model is built with a focus on transparency, efficiency, and reproducibility.
 
 ## Model Overview
 
